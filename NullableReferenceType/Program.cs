@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+#nullable enable
 
 namespace NullableReferenceType
 {
@@ -7,7 +8,7 @@ namespace NullableReferenceType
     {
         public static string ExibirDadosAluno(Aluno aluno)
         {
-            return $"Sobrenome: {aluno.Sobrenome} Nome: {aluno.Nome}, Idade: {aluno.Idade}";
+            return $"Nome: {aluno.Nome} Sobrenome: {aluno.Sobrenome[0]}., Idade: {aluno.Idade}";
         }
 
         public static IEnumerable<string> ListarAlunos(IList<Aluno> alunos)
@@ -17,6 +18,7 @@ namespace NullableReferenceType
                 yield return ExibirDadosAluno(aluno);
             }
         }
+
 
         static void Main(string[] args)
         {
@@ -34,8 +36,20 @@ namespace NullableReferenceType
                 Console.WriteLine(aluno);
             }
 
-
             Console.ReadKey();
+        }
+    }
+
+    public class Aluno
+    {
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public int Idade { get; set; }
+
+        public Aluno(string nome, int idade)
+        {
+            Nome = nome;
+            Idade = idade;
         }
     }
 }
