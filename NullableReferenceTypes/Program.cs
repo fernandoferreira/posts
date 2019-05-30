@@ -8,7 +8,9 @@ namespace NullableReferenceType
     {
         public static string ExibirDadosAluno(Aluno aluno)
         {
-            return $"Nome: {aluno.Nome} Sobrenome: {aluno.Sobrenome[0]}., Idade: {aluno.Idade}";
+            return (aluno.Sobrenome != null)
+            ? $"Nome: {aluno.Nome} Sobrenome: {aluno.Sobrenome[0]}., Idade: {aluno.Idade}"
+            : $"Nome: {aluno.Nome}, Idade: {aluno.Idade}";
         }
 
         public static IEnumerable<string> ListarAlunos(IList<Aluno> alunos)
